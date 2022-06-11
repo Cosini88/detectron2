@@ -79,7 +79,8 @@ def launch(
             daemon=False,
         )
     else:
-        main_func(*args)
+        return main_func(*args)
+
 
 
 def _distributed_worker(

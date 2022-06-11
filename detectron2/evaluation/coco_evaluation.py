@@ -280,6 +280,7 @@ class COCOEvaluator(DatasetEvaluator):
                 coco_eval, task, class_names=self._metadata.get("thing_classes")
             )
             self._results[task] = res
+            self._coco_eval = coco_eval
 
     def _eval_box_proposals(self, predictions):
         """
@@ -304,6 +305,8 @@ class COCOEvaluator(DatasetEvaluator):
             }
             with PathManager.open(os.path.join(self._output_dir, "box_proposals.pkl"), "wb") as f:
                 pickle.dump(proposal_data, f)
+
+
 
         if not self._do_evaluation:
             self._logger.info("Annotations are not available for evaluation.")

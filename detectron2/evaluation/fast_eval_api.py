@@ -52,6 +52,7 @@ class COCOeval_opt(COCOeval):
 
         maxDet = p.maxDets[-1]
 
+
         # <<<< Beginning of code differences with original COCO API
         def convert_instances_to_cpp(instances, is_det=False):
             # Convert annotations for a list of instances in an image to a format that's fast
@@ -94,6 +95,7 @@ class COCOeval_opt(COCOeval):
         toc = time.time()
         logger.info("COCOeval_opt.evaluate() finished in {:0.2f} seconds.".format(toc - tic))
         # >>>> End of code differences with original COCO API
+        return self
 
     def accumulate(self):
         """
